@@ -1,0 +1,9 @@
+{
+  "name": "@monorepo/lint-staged-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "lint-staged": "^11.1.2"
+  }
+}
