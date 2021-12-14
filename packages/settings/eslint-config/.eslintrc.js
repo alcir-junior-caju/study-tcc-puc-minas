@@ -4,7 +4,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'airbnb',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -13,13 +18,22 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'prettier',
+    'eslint-plugin-import-helpers',
+  ],
   ignorePatterns: ['packages/**/*.{js,css}'],
   rules: {
     'prettier/prettier': 'error',
     'no-console': 'off',
     'no-use-before-define': 'off',
     'no-undef': 'off',
+    'no-useless-constructor': 'off',
+    'no-param-reassign': 'off',
+    'no-unused-vars': 'off',
+    camelcase: 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': [
       'error',
@@ -54,6 +68,21 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+      },
+    ],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'interface',
+        prefix: ['I'],
+        format: ['PascalCase'],
+      },
+    ],
+    'class-methods-use-this': 'off',
   },
   settings: {
     'import/resolver': {
