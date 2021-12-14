@@ -1,5 +1,0 @@
-.eslintrc
-packages/**/*.js
-packages/**/*.css
-node_modules
-dist
