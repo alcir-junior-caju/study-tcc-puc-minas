@@ -162,7 +162,14 @@ const Profile: React.FC = () => {
           >
             <Avatar>
               {user.avatarUrl ? (
-                <img src={user.avatarUrl} alt={user.name} />
+                <img
+                  src={
+                    user.avatarUrl?.includes('pravatar')
+                      ? user.avatar
+                      : user.avatarUrl
+                  }
+                  alt={user.name}
+                />
               ) : (
                 <FiUser size={30} />
               )}

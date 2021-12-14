@@ -35,6 +35,7 @@
     "react/prop-types": "off",
     "import/prefer-default-export": "off",
     "import/no-duplicates": "off",
+    "import/no-unresolved": "off",
     "no-shadow": "off",
     "camelcase": "off",
     "@typescript-eslint/ban-types": "off",

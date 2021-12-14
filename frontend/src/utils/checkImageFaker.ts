@@ -9,7 +9,7 @@ export default function checkImageFaker({
   avatar,
   id
 }: AvatarFaker): String {
-  const imageFaker = avatarUrl.includes('pravatar');
+  const imageFaker = avatarUrl?.includes('pravatar');
 
   if (imageFaker) return `${avatar}?u=${id}`;
 
