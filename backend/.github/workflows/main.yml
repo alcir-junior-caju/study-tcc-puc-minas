@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        
+      # Install Node
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+          
+      # Install Dependencies
+      - name: Install Dependencies
+        run: yarn
+      
+      # Run Build
+      - name: Run Build
+        run: yarn build
+        
+      # Copy Application
+      - name: Copy Application
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: ".,!node_modules"
+          target: "app/gobarber/"
+          
+      # Run Scripts Host
+      - name: Run Scripts Host
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd app/gobarber
+            sudo yarn
+            ./node_modules/.bin/typeorm migration:run
+            sudo pm2 restart gobarber-api
