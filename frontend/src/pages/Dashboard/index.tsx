@@ -58,7 +58,7 @@ const Dashboard: React.FC = () => {
   }, [setSelectedDate]);
 
   useEffect(() => {
-    api
+    api.system
       .get(`providers/${id}/month-availability`, {
         params: {
           year: currentMonth.getFullYear(),
@@ -69,7 +69,7 @@ const Dashboard: React.FC = () => {
   }, [currentMonth, id]);
 
   useEffect(() => {
-    api
+    api.system
       .get<Appointment[]>('/appointments/me', {
         params: {
           year: selectedDate.getFullYear(),

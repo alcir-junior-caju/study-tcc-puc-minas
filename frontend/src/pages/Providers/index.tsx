@@ -20,7 +20,7 @@ const Providers: React.FC = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
 
   useEffect(() => {
-    api.get('providers').then(response => setProviders(response.data));
+    api.system.get('providers').then(response => setProviders(response.data));
   }, []);
 
   return (

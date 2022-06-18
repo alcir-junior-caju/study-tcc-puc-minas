@@ -78,7 +78,7 @@ const CreateAppointment: React.FC = () => {
   }, [setSelectedDate]);
 
   useEffect(() => {
-    api.get('providers').then(response => setProviders(response.data));
+    api.system.get('providers').then(response => setProviders(response.data));
   }, []);
 
   const handleSelectProvider = useCallback((providerId: string) => {
@@ -92,7 +92,7 @@ const CreateAppointment: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    api
+    api.system
       .get(`providers/${selectedProvider}/month-availability`, {
         params: {
           year: currentMonth.getFullYear(),
@@ -103,7 +103,7 @@ const CreateAppointment: React.FC = () => {
   }, [currentMonth, selectedProvider]);
 
   useEffect(() => {
-    api
+    api.system
       .get(`providers/${selectedProvider}/day-availability`, {
         params: {
           year: selectedDate.getFullYear(),
@@ -159,7 +159,7 @@ const CreateAppointment: React.FC = () => {
       date.setHours(selectedHour);
       date.setMinutes(0);
 
-      await api.post('appointments', {
+      await api.system.post('appointments', {
         providerId: selectedProvider,
         date
       });

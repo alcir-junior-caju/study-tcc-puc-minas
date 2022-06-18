@@ -45,7 +45,7 @@ const ForgotPassword: React.FC = () => {
           abortEarly: false
         });
 
-        await api.post('/password/forgot', { email: data.email });
+        await api.system.post('/password/forgot', { email: data.email });
 
         addToast({
           type: 'success',

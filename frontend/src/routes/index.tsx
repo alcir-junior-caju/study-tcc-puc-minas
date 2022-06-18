@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
+import Blog from '@pages/Blog';
 import CreateAppointment from '@pages/CreateAppointment';
 import Dashboard from '@pages/Dashboard';
 import ForgotPassword from '@pages/ForgotPassword';
@@ -22,6 +23,7 @@ const Routes: React.FC = () => {
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/blog/:slug?" component={Blog} isPrivate />
 
       <Route
         path="/create-appointment/:providerId"

@@ -5,7 +5,7 @@ import api from '@services/api';
 
 import { AuthProvider, useAuth } from '@hooks/auth';
 
-const apiMock = new MockAdapter(api);
+const apiMock = new MockAdapter(api.system);
 
 describe('Auth hook', () => {
   it('Should be able to sign in', async () => {

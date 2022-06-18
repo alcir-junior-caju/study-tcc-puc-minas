@@ -81,7 +81,7 @@ const Profile: React.FC = () => {
             : {})
         };
 
-        const response = await api.put('/profile', formData);
+        const response = await api.system.put('/profile', formData);
 
         updateUser(response.data);
 
@@ -119,7 +119,7 @@ const Profile: React.FC = () => {
 
         data.append('avatar', e.target.files[0]);
 
-        api
+        api.system
           .patch('/users', data)
           .then(response => {
             updateUser(response.data);
